@@ -12,7 +12,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Account findByAccountCode(Long accountCode);
 
     Account findByAccountId(Long accountId);
- //   List<Account> findByClientId(Long clientId);
+    List<Account> findByClientClientId(Long clientId);
     List<Account> findByAccountType(AccountType accountType);
     List<Account> findAll();
 }

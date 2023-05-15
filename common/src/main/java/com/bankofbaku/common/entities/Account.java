@@ -27,9 +27,6 @@ public class Account {
     private Double balance;
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
-//    @ManyToOne(optional = false,cascade = CascadeType.ALL)
-//    @JoinColumn(name = "client_id")
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     private Client client;

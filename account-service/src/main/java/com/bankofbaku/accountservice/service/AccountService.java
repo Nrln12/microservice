@@ -15,7 +15,7 @@ public interface AccountService {
     AccountDto getByAccountId(Long accountId);
     List<AccountDto> getAccountByAccountType(AccountType type);
     List<AccountDto> getAllAccounts();
-//    List<AccountDto> getByClientId(Long clientId);
+    List<AccountDto> getByClientId(Long clientId);
     @Transactional
     AccountDto updateAccount(Long accountId, AccountDto accountDto);
 }

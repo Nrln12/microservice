@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.bankofbaku.common.enums.AccountType;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,6 +35,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @SneakyThrows
+    @Transactional
     public AccountDto createAccount(AccountDto accountDto) {
        Optional<Account> checkAccount = Optional.ofNullable(accountRepository.findByAccountCode(accountDto.getAccountCode()));
         if (checkAccount.isPresent()) throw new BadRequestException("Account has already existed");
@@ -76,12 +78,12 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.findAll().stream().map(account -> mapper.map(account, AccountDto.class)).collect(Collectors.toList());
     }
 
-//    @Override
-//    public List<AccountDto> getByClientId(Long clientId) {
-//        List<Account> accountDtoList = accountRepository.findByClientId(clientId);
-//        if (accountDtoList.isEmpty()) throw new NotFoundException("This client doesn't have account");
-//        return accountDtoList.stream().map(account -> mapper.map(account, AccountDto.class)).collect(Collectors.toList());
-//    }
+    @Override
+    public List<AccountDto> getByClientId(Long clientId) {
+        List<Account> accountDtoList = accountRepository.findByClientClientId(clientId);
+        if (accountDtoList.isEmpty()) throw new NotFoundException("This client doesn't have account");
+        return accountDtoList.stream().map(account -> mapper.map(account, AccountDto.class)).collect(Collectors.toList());
+    }
 
     @Override
     @SneakyThrows

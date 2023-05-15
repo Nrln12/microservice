@@ -31,6 +31,6 @@ public class Client {
     private String name;
     private String surname;
     private String middlename;
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client")
     private List<Account> accounts;
 }

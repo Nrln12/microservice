@@ -37,10 +37,10 @@ public class AccountController {
         return ResponseEntity.ok().body(accountService.getAllAccounts());
     }
 
-//    @GetMapping("/clientId/{clientId}")
-//    public ResponseEntity getByClientId(@PathVariable Long clientId){
-//        return ResponseEntity.ok().body(accountService.getByClientId(clientId));
-//    }
+    @GetMapping("/clientId/{clientId}")
+    public ResponseEntity getByClientId(@PathVariable Long clientId){
+        return ResponseEntity.ok().body(accountService.getByClientId(clientId));
+    }
 
     @PutMapping("/updateAccount/{accountId}")
     public ResponseEntity updateAccount(@PathVariable Long accountId, @RequestBody AccountDto accountDto){
